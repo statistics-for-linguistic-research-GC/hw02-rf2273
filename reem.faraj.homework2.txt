@@ -1,0 +1,49 @@
+Reem Faraj	homewok 2
+1.
+> x=501
+> n=501+1859
+> p=.5
+> n
+[1] 2360
+> binom.test(501,2360,.5)
+
+	Exact binomial test
+
+data:  501 and 2360
+number of successes = 501, number of trials = 2360, p-value < 2.2e-16
+alternative hypothesis: true probability of success is not equal to 0.5
+95 percent confidence interval:
+ 0.1959431 0.2293504
+sample estimates:
+probability of success 
+             0.2122881
+Null hypothesis is rejected because p value is very small. Thus the two constructions are equiprobable
+=========================================================================
+2.
+> DF_2=read.table("PTB.tsv", header = T)
+> Stanford.correct <- DF_2$gold.tag == DF_2$Stanford.tag
+> NLP4J.correct <- DF_2$gold.tag == DF_2$NLP4J.tag
+> x1 <- sum(Stanford.correct & !NLP4J.correct)
+> x1
+[1] 943
+
+> x2 <- sum(!Stanford.correct & NLP4J.correct)
+> x2
+[1] 1016
+
+> x = min(x1,x2)
+> n = x1 + x2
+> p = .5
+> binom.test(x, n, p)
+
+	Exact binomial test
+
+data:  x and n
+number of successes = 943, number of trials = 1959, p-value = 0.1038
+alternative hypothesis: true probability of success is not equal to 0.5
+95 percent confidence interval:
+ 0.459029 0.503763
+sample estimates:
+probability of success 
+              0.481368 
+
